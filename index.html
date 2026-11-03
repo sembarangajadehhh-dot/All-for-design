@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Isi Kotak — Hardware Komputer, Dibongkar</title>
+    <meta
+      name="description"
+      content="Tugas sekolah: panduan komponen hardware komputer dengan model 3D yang bongkar sendiri saat kamu scroll."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,800;1,400&family=Libre+Franklin:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/hardware.css" />
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="nav">
+      <a class="nav__mark" href="#atas">Isi&nbsp;Kotak</a>
+      <nav class="nav__links" aria-label="Bagian">
+        <a href="#bongkar">Bongkar</a>
+        <a href="#komponen">Komponen</a>
+        <a href="#tabel">Perbandingan</a>
+        <a href="#kuis">Kuis</a>
+      </nav>
+      <span class="nav__badge">Tugas&nbsp;·&nbsp;Sistem&nbsp;Komputer</span>
+    </header>
+
+    <main id="atas">
+      <!-- 1. Hero: the sentence is the layout -->
+      <section class="hero">
+        <p class="hero__kicker">Panduan hardware · delapan komponen</p>
+
+        <h1 class="hero__statement" data-split>
+          Sebuah PC bukan satu mesin: ia
+          <span class="slot"
+            ><img src="/img/motherboard.jpg" alt="Motherboard mini-ITX dilihat dari atas" width="900"
+            height="600" /></span
+          >delapan benda yang sepakat bekerja.
+        </h1>
+
+        <div class="hero__foot">
+          <p class="hero__lede">
+            Dari CPU sampai casing — apa fungsinya, apa contohnya, dan apa yang menentukan
+            kualitasnya. Model 3D di bawah bisa kamu bongkar sendiri sambil scroll.
+          </p>
+          <a class="btn" href="#bongkar">Bongkar sekarang<span aria-hidden="true">↓</span></a>
+        </div>
+
+        <dl class="facts">
+          <div><dt>Komponen</dt><dd>8</dd></div>
+          <div><dt>Model 3D</dt><dd>1</dd></div>
+          <div><dt>Kuis</dt><dd>5 soal</dd></div>
+        </dl>
+      </section>
+
+      <!-- 2. The 3D teardown -->
+      <section class="teardown" id="bongkar">
+        <div class="teardown__stage">
+          <canvas id="scene" aria-hidden="true"></canvas>
+
+          <div class="teardown__hud">
+            <p class="teardown__eyebrow">Bongkar · 01</p>
+            <h2>Motherboard, dipisah jadi bagiannya.</h2>
+            <p class="teardown__hint" id="hint">Scroll untuk membuka.</p>
+          </div>
+
+          <div class="labels" id="labels" aria-hidden="true"></div>
+
+          <div class="teardown__meter" aria-hidden="true">
+            <span id="meter"></span>
+          </div>
+
+          <noscript>
+            <p class="teardown__fallback">
+              Model 3D butuh JavaScript. Semua komponen tetap dijelaskan di bagian berikutnya.
+            </p>
+          </noscript>
+        </div>
+      </section>
+
+      <!-- 3. The eight components -->
+      <section class="parts" id="komponen">
+        <header class="parts__head">
+          <h2>Delapan bagian, satu per satu.</h2>
+          <p>
+            Urutannya mengikuti alur kerja komputer: yang mengolah, yang menghubungkan, yang
+            mengingat, yang menampilkan, yang menyimpan, lalu yang memberi daya dan menjaganya
+            tetap dingin.
+          </p>
+        </header>
+
+        <ol class="parts__list">
+          <li class="part">
+            <div class="part__no">01</div>
+            <div class="part__body">
+              <h3>CPU <span>Central Processing Unit</span></h3>
+              <p class="part__role">Otak komputer. Menjalankan instruksi program dan menghitung.</p>
+              <dl>
+                <div><dt>Contoh</dt><dd>Intel Core i5-13400F · AMD Ryzen 5 7600</dd></div>
+                <div><dt>Yang menentukan</dt><dd>Jumlah core/thread, kecepatan (GHz), cache</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/cpu.jpg" alt="CPU dilihat dari atas, permukaan logam dengan sudut terpotong" loading="lazy" />
+            </figure>
+          </li>
+
+          <li class="part">
+            <div class="part__no">02</div>
+            <div class="part__body">
+              <h3>Motherboard <span>Papan induk</span></h3>
+              <p class="part__role">
+                Menghubungkan semua komponen: jalur data, jalur daya, dan tempat memasang
+                kartu-kartu.
+              </p>
+              <dl>
+                <div><dt>Contoh</dt><dd>B650 (AMD) · B760 (Intel) · ukuran ATX, mATX, ITX</dd></div>
+                <div><dt>Yang menentukan</dt><dd>Socket CPU, chipset, jumlah slot RAM dan PCIe</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/motherboard.jpg" alt="Motherboard mini-ITX dengan socket CPU kosong dan dua slot RAM" loading="lazy" />
+            </figure>
+          </li>
+
+          <li class="part">
+            <div class="part__no">03</div>
+            <div class="part__body">
+              <h3>RAM <span>Random Access Memory</span></h3>
+              <p class="part__role">
+                Meja kerja sementara. Menyimpan data yang sedang dipakai — cepat, tapi hilang
+                saat listrik mati.
+              </p>
+              <dl>
+                <div><dt>Contoh</dt><dd>DDR4 3200 16 GB · DDR5 5600 32 GB</dd></div>
+                <div><dt>Yang menentukan</dt><dd>Kapasitas, kecepatan (MT/s), latensi, dual channel</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/ram.jpg" alt="Satu keping RAM dengan kontak emas di tepinya" loading="lazy" />
+            </figure>
+          </li>
+
+          <li class="part">
+            <div class="part__no">04</div>
+            <div class="part__body">
+              <h3>GPU <span>Graphics Processing Unit</span></h3>
+              <p class="part__role">
+                Menggambar apa pun yang muncul di layar, dan mempercepat hitungan paralel
+                (render 3D, video, AI).
+              </p>
+              <dl>
+                <div><dt>Contoh</dt><dd>NVIDIA RTX 4060 · AMD RX 7600 · iGPU di dalam CPU</dd></div>
+                <div><dt>Yang menentukan</dt><dd>VRAM, jumlah core/shader, arsitektur, konsumsi daya</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/gpu.jpg" alt="Kartu grafis dengan dua kipas besar dan konektor PCIe keemasan" loading="lazy" />
+            </figure>
+          </li>
+
+          <li class="part">
+            <div class="part__no">05</div>
+            <div class="part__body">
+              <h3>Penyimpanan <span>SSD &amp; HDD</span></h3>
+              <p class="part__role">
+                Lemari arsip. Menyimpan data secara permanen — sistem operasi, file, foto,
+                game.
+              </p>
+              <dl>
+                <div><dt>Contoh</dt><dd>NVMe SSD 1 TB · SATA SSD 500 GB · HDD 2 TB</dd></div>
+                <div><dt>Yang menentukan</dt><dd>Kecepatan baca/tulis, antarmuka (NVMe/SATA), daya tahan</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/ssd.jpg" alt="SSD M.2 NVMe dengan chip memori dan konektor emas" loading="lazy" />
+            </figure>
+          </li>
+
+          <li class="part">
+            <div class="part__no">06</div>
+            <div class="part__body">
+              <h3>PSU <span>Power Supply Unit</span></h3>
+              <p class="part__role">
+                Jantung listrik. Mengubah arus AC dari stopkontak menjadi DC 3,3 V / 5 V / 12 V
+                untuk seluruh komponen.
+              </p>
+              <dl>
+                <div><dt>Contoh</dt><dd>550 W 80+ Bronze · 750 W 80+ Gold</dd></div>
+                <div><dt>Yang menentukan</dt><dd>Daya (watt), sertifikasi efisiensi, konektor, proteksi</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/psu.jpg" alt="Power supply dengan kisi kipas besar dan soket kabel modular" loading="lazy" />
+            </figure>
+          </li>
+
+          <li class="part">
+            <div class="part__no">07</div>
+            <div class="part__body">
+              <h3>Pendingin <span>Cooler</span></h3>
+              <p class="part__role">
+                Menyerap panas dari CPU atau GPU lalu membuangnya. Tanpa ini, chip menurunkan
+                kecepatan sendiri (throttling).
+              </p>
+              <dl>
+                <div><dt>Contoh</dt><dd>Tower cooler udara · AIO liquid 240 mm · kipas casing</dd></div>
+                <div><dt>Yang menentukan</dt><dd>Dukungan TDP, aliran udara, tingkat kebisingan</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/cooler.jpg" alt="Pendingin tower udara dengan sirip logam dan heatpipe" loading="lazy" />
+            </figure>
+          </li>
+
+          <li class="part">
+            <div class="part__no">08</div>
+            <div class="part__body">
+              <h3>Casing <span>Chassis</span></h3>
+              <p class="part__role">
+                Rumah dan jalur udara. Menentukan apa yang muat, seberapa dingin, dan seberapa
+                mudah dirawat.
+              </p>
+              <dl>
+                <div><dt>Contoh</dt><dd>Mid-tower mesh · mini-ITX case · open frame</dd></div>
+                <div><dt>Yang menentukan</dt><dd>Form factor, aliran udara, ruang radiator, kabel</dd></div>
+              </dl>
+            </div>
+            <figure class="part__photo">
+              <img src="/img/casing.jpg" alt="Casing komputer mid-tower dengan panel mesh di depan" loading="lazy" />
+            </figure>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 4. Comparison table -->
+      <section class="compare" id="tabel">
+        <header class="compare__head">
+          <h2>Yang sering tertukar.</h2>
+          <p>Tiga pasangan yang paling sering salah dijawab waktu ujian.</p>
+        </header>
+
+        <table class="compare__table">
+          <caption class="sr-only">Perbandingan pasangan komponen yang sering tertukar</caption>
+          <thead>
+            <tr>
+              <th scope="col">Pasangan</th>
+              <th scope="col">Yang satu</th>
+              <th scope="col">Yang lain</th>
+              <th scope="col">Cara mengingat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">RAM vs ROM</th>
+              <td>RAM: sementara, bisa ditulis ulang, hilang saat mati</td>
+              <td>ROM: permanen, hanya dibaca, tetap ada saat mati</td>
+              <td>RAM = meja kerja, ROM = papan pengumuman</td>
+            </tr>
+            <tr>
+              <th scope="row">HDD vs SSD</th>
+              <td>HDD: piringan berputar, murah per GB, lambat, mudah rusak jika diguncang</td>
+              <td>SSD: chip flash, senyap, cepat, tahan guncangan</td>
+              <td>HDD = pemutar musik, SSD = kartu memori</td>
+            </tr>
+            <tr>
+              <th scope="row">CPU vs GPU</th>
+              <td>CPU: sedikit core yang sangat pintar, mengerjakan banyak tugas berbeda</td>
+              <td>GPU: ribuan core kecil, sangat cepat untuk satu jenis hitungan (gambar)</td>
+              <td>CPU = 8 ahli serba bisa, GPU = 4000 pekerja khusus</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="flow">
+          <p class="flow__label">Alur kerja singkat</p>
+          <ol class="flow__steps">
+            <li><span>Input</span>Keyboard &amp; mouse mengirim sinyal</li>
+            <li><span>Proses</span>CPU menghitung, RAM menyimpan sementara</li>
+            <li><span>Output</span>GPU menggambar hasilnya ke layar</li>
+            <li><span>Simpan</span>SSD/HDD menyimpan permanen</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 5. Quiz -->
+      <section class="quiz" id="kuis">
+        <header class="quiz__head">
+          <h2>Kuis kilat.</h2>
+          <p>Lima soal. Tanpa nilai, tanpa tekanan — tapi coba jawab dulu sebelum lihat kunci.</p>
+        </header>
+
+        <form class="quiz__form" id="quiz">
+          <fieldset>
+            <legend>1. Komponen yang menjalankan instruksi program disebut…</legend>
+            <label><input type="radio" name="q1" value="a" /> GPU</label>
+            <label><input type="radio" name="q1" value="b" /> CPU</label>
+            <label><input type="radio" name="q1" value="c" /> PSU</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. Memori yang isinya hilang saat komputer dimatikan adalah…</legend>
+            <label><input type="radio" name="q2" value="a" /> RAM</label>
+            <label><input type="radio" name="q2" value="b" /> ROM</label>
+            <label><input type="radio" name="q2" value="c" /> SSD</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. Perbedaan paling dasar HDD dan SSD adalah…</legend>
+            <label><input type="radio" name="q3" value="a" /> Warnanya</label>
+            <label><input type="radio" name="q3" value="b" /> HDD memakai piringan berputar, SSD memakai chip flash</label>
+            <label><input type="radio" name="q3" value="c" /> SSD hanya untuk laptop</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>4. Fungsi utama PSU adalah…</legend>
+            <label><input type="radio" name="q4" value="a" /> Mengubah arus AC menjadi DC untuk komponen</label>
+            <label><input type="radio" name="q4" value="b" /> Menyimpan data</label>
+            <label><input type="radio" name="q4" value="c" /> Menampilkan gambar</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>5. Kompatibilitas CPU dengan motherboard ditentukan oleh…</legend>
+            <label><input type="radio" name="q5" value="a" /> Warna casing</label>
+            <label><input type="radio" name="q5" value="b" /> Socket dan chipset</label>
+            <label><input type="radio" name="q5" value="c" /> Merek monitor</label>
+          </fieldset>
+
+          <div class="quiz__actions">
+            <button class="btn btn--solid" type="submit">Periksa jawaban</button>
+            <p class="quiz__result" id="quiz-result" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot__col">
+        <p class="foot__mark">Isi Kotak</p>
+        <p>Tugas Sistem Komputer — komponen hardware dan fungsinya.</p>
+      </div>
+      <div class="foot__col">
+        <p class="foot__label">Sumber</p>
+        <p>Materi dasar arsitektur komputer. Foto: ilustrasi studio. Model 3D: dibuat dengan Three.js.</p>
+      </div>
+      <div class="foot__col">
+        <p class="foot__label">Lainnya</p>
+        <p><a href="/lab.html">Halaman lab (GSAP + Lenis)</a></p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/hardware.js"></script>
+  </body>
+</html>

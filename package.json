@@ -1,0 +1,24 @@
+{
+  "name": "all-for-design",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A design toolkit workspace: four AI-agent skill packs + GSAP and Lenis vendored from source, wired into a runnable demo lab.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "build:lenis": "npm --prefix vendor/lenis run build",
+    "smoke": "node scripts/smoke-scene.mjs",
+    "check": "npm run smoke && vite build",
+    "single": "node scripts/bundle-single.mjs"
+  },
+  "dependencies": {
+    "gsap": "file:vendor/gsap",
+    "lenis": "file:vendor/lenis",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
