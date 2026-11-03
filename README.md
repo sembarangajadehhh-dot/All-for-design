@@ -1,68 +1,89 @@
 # All for Design
 
-A design toolkit, installed and runnable: **15 AI-agent skills** and **2 animation
-libraries (GSAP + Lenis)** vendored from source, plus a demo lab that proves both compile
-and run from this repo.
+A design toolkit and the site built with it: **15 AI-agent skills**, **GSAP + Lenis** vendored
+from source, and **Three.js** driving a scroll-controlled exploded view of a PC motherboard.
 
 ```bash
 npm install
 npm run dev      # http://localhost:5173
 ```
 
-## What's inside
+- **`/`** — *Isi Kotak*: the hardware explainer (the assignment).
+- **`/lab.html`** — the GSAP + Lenis motion demo.
 
-```
-All-for-design/
-├── skills/                 # agent skill packs (16.6k lines of guidance)
-│   ├── anatomy/            # isometric SVG + WebGL figures (SKILL.md)
-│   ├── ponytail/           # 6 skills: lazy-senior-dev, review, audit, debt, gain, help
-│   ├── taste/              # taste-skill: type, spacing, colour, motion judgement
-│   └── ui-ux-pro-max/      # 7 skills + CLI + component gallery + screenshots
-├── vendor/
-│   ├── gsap/               # GSAP 3.15.0 — dist + esm, all plugins included
-│   └── lenis/              # Lenis 1.3.27 — TypeScript source, built with tsdown
-├── .claude/skills/         # 15 symlinks so skill-aware agents auto-discover them
-├── src/                    # demo: main.js (GSAP + Lenis), style.css
-├── index.html              # demo lab page
-├── archives/               # original zips (gitignored, kept out of commits)
-└── AGENTS.md               # guidance for AI agents working here
-```
+## The site: Isi Kotak
 
-## The two libraries
+An Indonesian-language school assignment about computer hardware, designed as a datasheet on
+newsprint (direction dealt by the `taste` skill: *the page is the object*, Besley /
+Libre Franklin, newsprint + brass).
+
+| Section | What it does |
+|---|---|
+| Hero | A sentence at poster scale with a motherboard photograph set **inside** the sentence |
+| Bongkar | Pinned WebGL scene: a procedural motherboard that explodes into 8 parts as you scroll, with labels tracking each part in 3D |
+| Komponen | All 8 components — CPU, motherboard, RAM, GPU, storage, PSU, cooler, casing — each with function, examples and the specs that matter |
+| Perbandingan | RAM vs ROM, HDD vs SSD, CPU vs GPU, plus the input → proses → output → simpan flow |
+| Kuis | Five questions, instant scoring, no backend |
+
+The 3D model is **procedural** — every part is built from boxes and cylinders in
+`src/scene.js`, so there are no model files to load. `scripts/smoke-scene.mjs` checks the
+assembly headlessly (`npm run smoke`): 10 assertions covering travel distance, ordering,
+monotonicity and that the cooler clears the CPU.
+
+Photography in `public/img/` is studio-style generated imagery held to one palette (warm paper,
+graphite, brass). Swap in real photos of your own hardware when you have them — keep the crops
+4:3 and the same lighting.
+
+## The two libraries, vendored
 
 | | version | how it arrives | import |
 |---|---|---|---|
 | **GSAP** | 3.15.0 | prebuilt `dist/` + `esm/`, linked via `file:vendor/gsap` | `import { gsap } from 'gsap'` |
 | **Lenis** | 1.3.27 | compiled here: `npm run build:lenis` → `vendor/lenis/dist/lenis.mjs` | `import Lenis from 'lenis'` |
+| **Three.js** | 0.187 | npm | `import * as THREE from 'three'` |
 
-Available GSAP plugins: ScrollTrigger, SplitText, ScrollSmoother, Flip, Observer,
-Draggable, InertiaPlugin, MotionPathPlugin, CustomEase, CustomBounce, CustomWiggle and
-more. No CDN, no `unpkg` links anywhere.
+GSAP plugins available: ScrollTrigger, SplitText, ScrollSmoother, Flip, Observer, Draggable,
+InertiaPlugin, MotionPathPlugin, CustomEase. No CDN anywhere.
 
-Lenis ships upstream as TypeScript only, so `dist/` is generated locally with `tsdown`
-(the project's own build). Re-run `npm run build:lenis` after editing
-`vendor/lenis/packages/core`.
+Lenis ships upstream as TypeScript only; `dist/` is generated locally with `tsdown`. Re-run
+`npm run build:lenis` after editing `vendor/lenis/packages/core`.
 
-## The demo page
+## Structure
 
-`index.html` + `src/main.js` exercise the real integration:
+```
+All-for-design/
+├── index.html              # Isi Kotak — the hardware site
+├── lab.html                # GSAP + Lenis motion demo
+├── src/
+│   ├── hardware.js         # scroll choreography, labels, quiz
+│   ├── hardware.css
+│   ├── scene.js            # procedural exploded motherboard (pure Three.js)
+│   ├── main.js             # lab page
+│   └── style.css
+├── public/img/             # CPU, motherboard, RAM, GPU, SSD, PSU, cooler, casing
+├── scripts/smoke-scene.mjs # headless checks for the 3D assembly
+├── skills/                 # 4 skill packs (15 skills total)
+├── vendor/gsap, vendor/lenis
+├── .claude/skills/         # 15 symlinks so agents auto-discover the skills
+├── archives/               # original zips (gitignored, in history at a060c5e)
+└── AGENTS.md               # guidance for AI agents working here
+```
 
-- Lenis smooth scroll, `lenis.on('scroll', ScrollTrigger.update)`, `gsap.ticker` as the RAF loop
-- SplitText per-word headline reveal inside a masked timeline
-- Pinned horizontal gallery (6 cards) driven by ScrollTrigger `scrub`
-- Scroll progress bar wired to Lenis' `progress`, `prefers-reduced-motion` respected
+## Commands
 
-## Skills
-
-15 skills are symlinked into `.claude/skills/` so skill-aware runtimes pick them up by
-name (`taste`, `anatomy`, `ponytail`, `ui-ux-pro-max`, `brand`, `design`, `design-system`,
-`ui-styling`, `banner-design`, `slides`, `ponytail-review`, `ponytail-audit`,
-`ponytail-debt`, `ponytail-gain`, `ponytail-help`). Each is a directory with its own
-`SKILL.md`; see [AGENTS.md](AGENTS.md) for when to load which.
+```bash
+npm run dev          # vite on 0.0.0.0:5173
+npm run build        # static bundle
+npm run smoke        # headless checks on the 3D scene
+npm run check        # smoke + build
+npm run build:lenis  # rebuild Lenis from source
+```
 
 ## Notes
 
-- `archives/` holds the original six zips you uploaded. They are gitignored — the content
-  is fully extracted into `skills/` and `vendor/`, and the zips still exist in history at
+- The JS bundle is ~680 kB because Three.js is included; it is one route, cached, and the
+  scene only renders while it is on screen (IntersectionObserver).
+- `prefers-reduced-motion` is honoured: the model renders pre-exploded and static, and the
+  pin/scrub choreography is skipped.
+- `archives/` holds the original six zips; they are gitignored and live in history at
   commit `a060c5e`.
-- `node_modules/` inside `vendor/lenis` is only needed to rebuild Lenis; it is gitignored.

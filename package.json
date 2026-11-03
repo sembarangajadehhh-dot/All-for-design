@@ -8,11 +8,14 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "build:lenis": "npm --prefix vendor/lenis run build"
+    "build:lenis": "npm --prefix vendor/lenis run build",
+    "smoke": "node scripts/smoke-scene.mjs",
+    "check": "npm run smoke && vite build"
   },
   "dependencies": {
     "gsap": "file:vendor/gsap",
-    "lenis": "file:vendor/lenis"
+    "lenis": "file:vendor/lenis",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "vite": "^5.4.10"

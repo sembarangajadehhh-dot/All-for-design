@@ -33,6 +33,7 @@ Rule of thumb: **taste** shapes the design, **ui-ux-pro-max** supplies the syste
 |---|---|---|
 | `gsap` 3.15.0 | `vendor/gsap` (dist + esm, prebuilt) | `import { gsap } from 'gsap'` |
 | `lenis` 1.3.27 | `vendor/lenis` (TypeScript, built with `tsdown`) | `import Lenis from 'lenis'` |
+| `three` 0.187 | npm (`package.json`) | `import * as THREE from 'three'` |
 
 Both are wired as `file:` dependencies in the root `package.json`. GSAP plugins
 (`ScrollTrigger`, `SplitText`, `ScrollSmoother`, `Flip`, `Observer`, `Draggable`,
@@ -56,8 +57,16 @@ Run this after a fresh clone if `import Lenis from 'lenis'` fails to resolve.
 npm install            # links gsap + lenis, installs vite
 npm run dev            # vite on 0.0.0.0:5173
 npm run build          # static bundle in dist/
+npm run smoke          # headless checks on the 3D assembly (no browser needed)
+npm run check          # smoke + build
 npm run build:lenis    # rebuild smooth scroll from source
 ```
+
+## The site
+
+`index.html` is a hardware explainer (Indonesian). Its 3D model lives in `src/scene.js` and is
+pure Three.js — no DOM, no renderer — so it can be tested in Node. If you change the scene,
+run `npm run smoke`; it asserts part travel, ordering and that the cooler clears the CPU.
 
 ## Conventions
 
