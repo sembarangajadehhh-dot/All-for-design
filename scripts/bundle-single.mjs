@@ -4,7 +4,7 @@
 //   node scripts/bundle-single.mjs   ->  isi-kotak.html
 
 import { execFileSync } from 'node:child_process'
-import { readFileSync, writeFileSync, existsSync, statSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync, statSync, mkdirSync, copyFileSync } from 'node:fs'
 import { join, dirname, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -61,5 +61,12 @@ html = html.replace(
 const out = join(root, 'isi-kotak.html')
 writeFileSync(out, html)
 
+// Same file, published from /site by GitHub Pages.
+const pages = join(root, 'site')
+mkdirSync(pages, { recursive: true })
+copyFileSync(out, join(pages, 'index.html'))
+writeFileSync(join(pages, '.nojekyll'), '')
+
 const kb = (statSync(out).size / 1024).toFixed(0)
 console.log(`\n✓ ${out}  (${kb} kB, semua aset tertanam)`)
+console.log(`✓ site/index.html  (untuk GitHub Pages)`)

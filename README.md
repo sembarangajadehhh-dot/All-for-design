@@ -13,6 +13,9 @@ npm run dev      # http://localhost:5173
 - **`isi-kotak.html`** — the whole site as one portable file (2.3 MB, every image and the
   Three.js bundle inlined). Double-click to open: no server, no repo, no internet needed.
   Rebuild it with `npm run single`.
+- **GitHub Pages** — `site/index.html` is that same file, published from this branch at
+  <https://sembarangajadehhh-dot.github.io/All-for-design/>. Anyone with the link can open it,
+  no login, no sandbox.
 
 ## The site: Isi Kotak
 
