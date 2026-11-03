@@ -13,9 +13,11 @@ npm run dev      # http://localhost:5173
 - **`isi-kotak.html`** — the whole site as one portable file (2.3 MB, every image and the
   Three.js bundle inlined). Double-click to open: no server, no repo, no internet needed.
   Rebuild it with `npm run single`.
-- **GitHub Pages** — `site/index.html` is that same file, published from this branch at
-  <https://sembarangajadehhh-dot.github.io/All-for-design/>. Anyone with the link can open it,
-  no login, no sandbox.
+- **GitHub Pages** — `site/index.html` is that same file, ready to publish. Turn it on once:
+  **Settings → Pages → Source: Deploy from a branch → Branch: `main`, folder `/site` → Save**.
+  The site then lives at <https://sembarangajadehhh-dot.github.io/All-for-design/>.
+  (Pages has to be enabled from the repository settings UI; the API token used here is not
+  allowed to create the site.)
 
 ## The site: Isi Kotak
 
