@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All for Design — the lab</title>
+    <meta
+      name="description"
+      content="Four agent skill packs and two animation libraries, vendored from source and running in one workspace."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="nav">
+      <a class="nav__mark" href="#top">All&nbsp;/&nbsp;for&nbsp;/&nbsp;Design</a>
+      <nav class="nav__links">
+        <a href="#toolkit">Toolkit</a>
+        <a href="#libs">Libraries</a>
+        <a href="#start">Start</a>
+      </nav>
+      <span class="nav__badge">v0.1 · local</span>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="hero__kicker">Design lab · installed locally</p>
+        <h1 class="hero__title" data-split>
+          Six tools, one workspace.
+        </h1>
+        <p class="hero__lede">
+          Four agent skill packs for taste, anatomy, restraint and UI systems — plus
+          <em>GSAP</em> and <em>Lenis</em>, vendored from source and building from this repo.
+        </p>
+        <div class="hero__meta">
+          <div><span>Skills</span><strong>4</strong></div>
+          <div><span>Libraries</span><strong>2</strong></div>
+          <div><span>Dependencies</span><strong>Resolved</strong></div>
+        </div>
+        <div class="scroll-cue" aria-hidden="true">
+          <span class="scroll-cue__line"><i></i></span>
+          <span class="scroll-cue__label">Scroll</span>
+        </div>
+      </section>
+
+      <section class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>anatomy</span><span>•</span><span>taste</span><span>•</span>
+          <span>ponytail</span><span>•</span><span>ui-ux-pro-max</span><span>•</span>
+          <span>gsap</span><span>•</span><span>lenis</span><span>•</span>
+          <span>anatomy</span><span>•</span><span>taste</span><span>•</span>
+          <span>ponytail</span><span>•</span><span>ui-ux-pro-max</span><span>•</span>
+          <span>gsap</span><span>•</span><span>lenis</span><span>•</span>
+        </div>
+      </section>
+
+      <section class="pin" id="toolkit">
+        <div class="pin__viewport">
+          <div class="pin__track">
+            <article class="card">
+              <span class="card__index">01</span>
+              <h2>Anatomy</h2>
+              <p>
+                A skill that explains an idea by building it as a real object — isometric
+                SVG figures with many small precise parts, plus optional WebGL shaders.
+              </p>
+              <span class="card__tag">skills/anatomy · SKILL.md</span>
+            </article>
+            <article class="card">
+              <span class="card__index">02</span>
+              <h2>Taste</h2>
+              <p>
+                The judgement layer: type, spacing, colour and motion conventions that keep
+                generated interfaces from looking generated.
+              </p>
+              <span class="card__tag">skills/taste · skills/taste-skill</span>
+            </article>
+            <article class="card">
+              <span class="card__index">03</span>
+              <h2>Ponytail</h2>
+              <p>
+                Lazy senior dev mode. Writes the one line that works and skips the
+                abstraction nobody asked for.
+              </p>
+              <span class="card__tag">skills/ponytail · plugin.json</span>
+            </article>
+            <article class="card">
+              <span class="card__index">04</span>
+              <h2>UI/UX Pro Max</h2>
+              <p>
+                The largest pack: seven skills covering brand, design systems, styling,
+                banners and slides, with a CLI and a component gallery.
+              </p>
+              <span class="card__tag">skills/ui-ux-pro-max · .claude/skills</span>
+            </article>
+            <article class="card">
+              <span class="card__index">05</span>
+              <h2>GSAP 3.15</h2>
+              <p>
+                Timeline-driven animation with ScrollTrigger, SplitText and ScrollSmoother —
+                built from the vendored source, not a CDN.
+              </p>
+              <span class="card__tag">vendor/gsap · dist + esm</span>
+            </article>
+            <article class="card">
+              <span class="card__index">06</span>
+              <h2>Lenis 1.3</h2>
+              <p>
+                Smooth scroll, compiled here with tsdown from the TypeScript source in
+                <code>packages/core</code>.
+              </p>
+              <span class="card__tag">vendor/lenis · dist/lenis.mjs</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="libs" id="libs">
+        <header class="libs__head">
+          <h2>What actually runs</h2>
+          <p>Two libraries compiled from this repo, imported by bare specifier in <code>src/main.js</code>.</p>
+        </header>
+        <ul class="libs__list">
+          <li>
+            <span class="libs__name">gsap</span>
+            <span class="libs__detail">file:vendor/gsap → esm/index.js · 3.15.0</span>
+          </li>
+          <li>
+            <span class="libs__name">lenis</span>
+            <span class="libs__detail">file:vendor/lenis → dist/lenis.mjs · 1.3.27</span>
+          </li>
+          <li>
+            <span class="libs__name">ScrollTrigger</span>
+            <span class="libs__detail">pin, scrub, snap — used by this page</span>
+          </li>
+          <li>
+            <span class="libs__name">SplitText</span>
+            <span class="libs__detail">per-word stagger on the headline</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="start" id="start">
+        <h2>Run it again</h2>
+        <div class="start__grid">
+          <pre><code>npm install
+npm run dev        # vite, host 0.0.0.0
+npm run build      # static output</code></pre>
+          <pre><code>npm run build:lenis   # rebuild smooth scroll
+# from source after editing
+# vendor/lenis/packages/core</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>All for Design</span>
+      <span>Built in the sandbox · <a href="/README.md">README</a></span>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

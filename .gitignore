@@ -1,0 +1,8 @@
+node_modules/
+/.vite/
+/dist/
+.DS_Store
+*.log
+
+# Original uploads — kept on disk, preserved in commit a060c5e
+/archives/
