@@ -10,7 +10,8 @@
     "preview": "vite preview --host 0.0.0.0",
     "build:lenis": "npm --prefix vendor/lenis run build",
     "smoke": "node scripts/smoke-scene.mjs",
-    "check": "npm run smoke && vite build"
+    "check": "npm run smoke && vite build",
+    "single": "node scripts/bundle-single.mjs"
   },
   "dependencies": {
     "gsap": "file:vendor/gsap",

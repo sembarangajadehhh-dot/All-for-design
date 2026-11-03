@@ -10,6 +10,9 @@ npm run dev      # http://localhost:5173
 
 - **`/`** — *Isi Kotak*: the hardware explainer (the assignment).
 - **`/lab.html`** — the GSAP + Lenis motion demo.
+- **`isi-kotak.html`** — the whole site as one portable file (2.3 MB, every image and the
+  Three.js bundle inlined). Double-click to open: no server, no repo, no internet needed.
+  Rebuild it with `npm run single`.
 
 ## The site: Isi Kotak
 
